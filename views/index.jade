@@ -1,0 +1,42 @@
+extends layout
+
+block content
+	.navbar.navbar-inverse.navbar-fixed-top
+		.navbar-inner
+			.container
+				a(class='brand', href='#') #{title}
+				.nav-collapse.collapse
+					if signedIn == "1"
+						p.navbar-text.pull-right
+							.dropdown.pull-right
+								| Logged in as <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img class="avatarImg" src="#{imgURL}" height="20" width="20" alt="#{user}">@#{user}<b class="caret"></b></a><ul role="menu" aria-labelledby="userdrop" class="dropdown-menu"><li><a href="/logout">Log Off</a></li></ul>
+					else
+						p.navbar-text.pull-right
+							<a href="/auth">Sign in!</a>
+	
+	.hero-unit	
+		h1 #{title}
+		if signedIn == "1"	
+			p A service that allows you to follow your Twitter-self from one year ago. Inspired by Twitshift. 
+		else
+			p A service that allows you to follow your Twitter-self from one year ago. Inspired by Twitshift.  To get started, connect your Twitter account by clicking the button below.
+			p
+			a.btn.btn-large.btn-primary(href="/auth")
+				i.icon-user.icon-white
+				|  Sign in With Twitter
+	.container
+		if signedIn == "1"
+			h2 Hey there, #{name}!
+			if twoauth == "1"
+				p It looks like you need to link your second account.
+				p Alright, so here's how this works.
+				ul
+					li Go make another <a href="https://twitter.com/signup" target="_blank">Twitter account</a>. Of course, if you already have another one lying around (perhaps if you're an ex-Twitshift user) you're welcome to just use that. This is the account that last year's tweets will show up from.
+					li It's a good idea to make sure that this new/secondary account is set to "private". If not, other users will be notified of you mentioning them when you don't mean to.
+					li Once that's all squared away, use the button below to connect your secondary account. <b>Keep in mind that you will likely have to SIGN OUT of your primary Twitter account in order to accomplish this once you click the button.</b>
+				a.btn.btn-large.btn-primary(href="/secondauth")
+					i.icon-user.icon-white
+					|  Sign in With Your OTHER Twitter Account
+			else
+				p You have successfully linked your account to:
+				p <img class="avatarImg" src="#{imgURLTwo}" height="20" width="20" alt="#{userTwo}">#{nameTwo} (@#{userTwo}).
