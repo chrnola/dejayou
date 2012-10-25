@@ -7,7 +7,6 @@
 // Import dependencies
 var express = require('express')
   , routes = require('./routes')
-  , user = require('./routes/user')
   , http = require('http')
   , path = require('path')
   , app = express()
@@ -66,7 +65,7 @@ app.get('/', function(req,res){
 			req.session.signedIn = 0;
 		}
 	}
-	res.render('index.jade', {title: 'DéjàMe', tID: req.session.twitterID, signedIn: req.session.signedIn, user: req.session.twitterScreenName, name: req.session.twitterName, imgURL: req.session.twitterImg, twoauth: req.session.needssecondauth, nameTwo: req.session.twitterNameTwo, userTwo: req.session.twitterScreenNameTwo, imgURLTwo: req.session.twitterImgTwo});
+	res.render('index.jade', {title: 'DéjàYou', tID: req.session.twitterID, signedIn: req.session.signedIn, user: req.session.twitterScreenName, name: req.session.twitterName, imgURL: req.session.twitterImg, twoauth: req.session.needssecondauth, nameTwo: req.session.twitterNameTwo, userTwo: req.session.twitterScreenNameTwo, imgURLTwo: req.session.twitterImgTwo});
 });
 
 app.get('/logout', function(req, res){
