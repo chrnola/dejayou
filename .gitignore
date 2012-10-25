@@ -1,4 +1,5 @@
 *~
 node_modules
 public/js/ga.js
-
+secrets.js
+.gitignore
