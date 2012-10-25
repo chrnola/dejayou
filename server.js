@@ -32,7 +32,7 @@ function consumer() {
 function consumerTwo() {
   return new oauth.OAuth(
     "https://api.twitter.com/oauth/request_token", "https://api.twitter.com/oauth/access_token",
-    _twitterConsumerKey, _twitterConsumerSecret, "1.0A", secrets.otherCallbackURL, "HMAC-SHA1");
+    secrets._twitterConsumerKey, secrets._twitterConsumerSecret, "1.0A", secrets.otherCallbackURL, "HMAC-SHA1");
 }
 
 // Standard ExpressJS config
